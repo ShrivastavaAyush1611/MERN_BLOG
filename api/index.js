@@ -18,7 +18,7 @@ const app = express()
 app.use(cookieParser())  //this is used to send the cookie from backend to frontend an it is used to get data from cookie
 app.use(express.json())
 app.use(cors({
-    origin: "http://localhost:5173", // Ensure this matches the frontend URL
+    origin: "https://mern-blog-dehx.vercel.app", // Ensure this matches the frontend URL
     credentials: true, // Allow cookies to be sent
 }))
 
