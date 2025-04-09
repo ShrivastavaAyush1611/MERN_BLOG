@@ -26,6 +26,7 @@ const GoogleLogin = () => {
               method: "POST",
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify(bodyData),
+              credentials: 'include',
             })
                 const data = await response.json()
                
