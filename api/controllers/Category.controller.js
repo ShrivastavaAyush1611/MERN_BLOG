@@ -1,6 +1,5 @@
-
 import { handleErrors } from "../helpers/handleErrors.js";
-import Category from "../models/category.model.js"
+import Category from "../models/category.model.js";
 
 export const addCategory = async (req, res, next) => {
     try {

@@ -19,6 +19,8 @@ app.use(cookieParser())  //this is used to send the cookie from backend to front
 app.use(express.json())
 app.use(cors({
     origin: ['https://mern-blog-rlql.vercel.app', 'https://mern-blog-dehx-gvkp5mrpx.vercel.app' , "*"], // Ensure this matches the frontend URL
+    // origin: ['http://localhost:5173'], // Ensure this matches the frontend URL
+    
     credentials: true, // Allow cookies to be sent
 }))
 
@@ -41,7 +43,7 @@ app.listen(PORT,()=>{
 })
 
 app.use((err, req, res, next) => {
-    console.error(err); // Log the error for debugging
+    console.error("Error Middleware:", err); // Log the error for debugging
     const statusCode = err.statusCode || 500;
     const message = err.message || 'Internal server error.';
     res.status(statusCode).json({

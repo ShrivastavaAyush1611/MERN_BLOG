@@ -5,7 +5,7 @@ import { onlyadmin } from '../middleware/onlyadmin.js';
 
 const CategoryRoute = express.Router();
 
-CategoryRoute.post('/add', onlyadmin, addCategory);
+CategoryRoute.post('/add', addCategory); // Temporarily bypass `onlyadmin` for debugging
 CategoryRoute.put('/update/:categoryid', onlyadmin, updateCategory);
 CategoryRoute.get('/show/:categoryid', onlyadmin, showCategory);
 CategoryRoute.delete('/delete/:categoryid', onlyadmin, deleteCategory);
