@@ -35,21 +35,28 @@ const formSchema = z.object({
    
    async function onSubmit(values) {
       try {
-        console.log(getEnv('VITE_API_BASE_URL'))
-        const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/category/add`,{
-          method:"post",
-          headers:{'Content-type' : 'application/json'},
-          body: JSON.stringify(values)
-        })
-        const data = await response.json()
-       console.log(data)
-        if(!response.ok){
-           showToast('error',data.message)
+        console.log("Submitting values:", values); // Debugging log
+        const response = await fetch(`${getEnv('VITE_API_BASE_URL')}/category/add`, {
+          method: "post",
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(values),
+        });
+
+        const data = await response.json();
+
+        console.log("Response:", response); // Debugging log
+        console.log("Response Data:", data); // Debugging log
+
+        if (!response.ok) {
+          showToast('error', data.message || 'Failed to add category.');
+          return;
         }
+
         form.reset();
-        showToast('success', data.message);
+        showToast('success', data.message || 'Category added successfully.');
       } catch (error) {
-        showToast('error',error.message)
+        console.error("Error:", error); // Debugging log
+        showToast('error', error.message || 'An unexpected error occurred.');
       }
     }
 
